@@ -9,13 +9,20 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.8/js/jquery.dataTables.min.js"></script>
 
-
     <script type="text/javascript">
       $(document).ready(function(){
         $('#main').DataTable( {
           "paging":   false,
           "info":     false,
-          "searching": false
+          "searching": false,
+           "ajax": {
+            "url": "https://script.googleusercontent.com/macros/echo?user_content_key=5KZwINr1NBTRVVpmb9NHaUAkcxzRXZvCX1SUMw2SkbEFLc5Bu0W6DTr5nbzzXa9dSK5BVsD0PuggcdzidtvOTdS06FqC21o6m5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnKD3hAVKg9h-SxKHLua1YDWaAzJzRpI4MZ8484VioQ9L-wCb3q_6aKnLEWvIeClIib1hX6RQXRhX&lib=M8LkCUVHiOn7crw3qXIxLr2RwFfpjt1Ql",
+            "dataSrc": ""
+          },
+           "columns": [
+            { "data": "Name" },
+            { "data": "Twitter URL" }
+        ]
         });
       });
   </script>
@@ -26,22 +33,12 @@
     <table class="table" id="main">
       <thead>
       <tr>
-        <th>name</th>
-        <th>handle</th>
-        <th>twitter followers</th>
+        <th>Name</th>
+        <th>Twitter URL</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Bernie Sanders</td>
-        <td><a href="https://twitter.com/berniesanders" target="_blank">@berniesanders</a></td>
-        <td>346,003</td>
-      </tr>
-      <tr>
-        <td>Bobby Jindal</td>
-        <td><a href="https://twitter.com/bobbyjindal" target="_blank">@bobbyjindal</a></td>
-        <td>209,357</td>
-      </tr>
+      
     </tbody>
     </table>
     </div>
