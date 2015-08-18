@@ -12,7 +12,11 @@
 
     <script type="text/javascript">
       $(document).ready(function(){
-        $('#main').DataTable();
+        $('#main').DataTable( {
+          "paging":   false,
+          "info":     false,
+          "searching": false
+        });
       });
   </script>
   </head>
