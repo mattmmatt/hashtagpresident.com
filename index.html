@@ -16,14 +16,20 @@
           "info":     false,
           "searching": false,
            "ajax": {
-            "url": "https://script.googleusercontent.com/macros/echo?user_content_key=5KZwINr1NBTRVVpmb9NHaUAkcxzRXZvCX1SUMw2SkbEFLc5Bu0W6DTr5nbzzXa9dSK5BVsD0PuggcdzidtvOTdS06FqC21o6m5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnKD3hAVKg9h-SxKHLua1YDWaAzJzRpI4MZ8484VioQ9L-wCb3q_6aKnLEWvIeClIib1hX6RQXRhX&lib=M8LkCUVHiOn7crw3qXIxLr2RwFfpjt1Ql",
+            "url": "https://script.google.com/macros/s/AKfycbzoWAagihLaM_SLCXrHp5tUW1Q6XSnpEc1J9DHaz5FM6Gk9V1Ci/exec",
             "dataSrc": ""
           },
            "columns": [
             { "data": "Name" },
             { "data": "Twitter URL" },
             { "data": "Followers Count"}
-        ]
+        ],
+        "formatNumber": function ( toFormat ) {
+            return toFormat.toString().replace(
+            /\B(?=(\d{3})+(?!\d))/g, "'"
+          )
+      }
+
         });
       });
   </script>
