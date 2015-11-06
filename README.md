@@ -1,1 +1,0 @@
-# hashtagpresident.com

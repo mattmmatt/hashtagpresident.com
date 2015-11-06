@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>hashtagpresident.com - Election Coverage</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.8/css/jquery.dataTables.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.8/js/jquery.dataTables.min.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('#main').DataTable( {
+          "paging":   false,
+          "info":     false,
+          "searching": false,
+           "ajax": {
+            "url": "./data.json",
+            "dataSrc": ""
+          },
+           "columns": [
+            { "data": "Name" },
+            { "data": "Party" },
+            { "data": "Twitter URL" },
+            { "data": "Followers Count"}
+        ],
+        "formatNumber": function ( toFormat ) {
+            return toFormat.toString().replace(
+            /\B(?=(\d{3})+(?!\d))/g, "'"
+          )
+      }
+
+        });
+      });
+  </script>
+  </head>
+  <body>
+    <h3>hashtagpresident.com</h3>
+    <div class="panel panel-default">
+    <div class="panel-heading">2016 Presidential Candidates</div>
+    <table class="table" id="main">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Party</th>
+        <th>Twitter URL</th>
+        <th>Followers</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+    </tbody>
+    </table>
+    </div>
+  </body>
+</html>
+<div>
+<iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=qf_sp_asin_til&ad_type=product_link&tracking_id=hashtpresi-20&marketplace=amazon&region=US&placement=1476751471&asins=1476751471&linkId=J6RYXS7V53UEKWFT&show_border=true&link_opens_in_new_window=true"></iframe>
+<iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=qf_sp_asin_til&ad_type=product_link&tracking_id=hashtpresi-20&marketplace=amazon&region=US&placement=1621574954&asins=1621574954&linkId=3W2KK65CCTWBYEOG&show_border=true&link_opens_in_new_window=true">
+</iframe>
+</div>
