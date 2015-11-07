@@ -49,5 +49,6 @@ end
 
 gem 'rails_12factor', group: :production
 gem 'puma'
+gem 'twitter'
 
 ruby "2.1.2"
