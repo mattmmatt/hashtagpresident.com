@@ -18,7 +18,9 @@ class WelcomeController < ApplicationController
       ch[:"Party"] = c.party
       ch[:"Twitter URL"] = c.twitter_url
       followers_count = client.user(c.twitter_handle).followers_count.to_s
+      c.followerCounts.create(twitter_followers: followers_count)
       ch[:"Followers Count"] = followers_count
+      c.save!
       r.push(ch)
     end
 
