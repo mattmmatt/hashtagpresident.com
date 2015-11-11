@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Candidate:</strong>
+  <%= @follower_count.candidate %>
+</p>
+
+<p>
+  <strong>Twitter follwers:</strong>
+  <%= @follower_count.twitter_follwers %>
+</p>
+
+<%= link_to 'Edit', edit_follower_count_path(@follower_count) %> |
+<%= link_to 'Back', follower_counts_path %>

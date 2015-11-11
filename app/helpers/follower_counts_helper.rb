@@ -1,0 +1,2 @@
+module FollowerCountsHelper
+end

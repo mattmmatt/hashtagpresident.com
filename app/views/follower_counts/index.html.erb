@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Follower Counts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Candidate</th>
+      <th>Twitter follwers</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @follower_counts.each do |follower_count| %>
+      <tr>
+        <td><%= follower_count.candidate %></td>
+        <td><%= follower_count.twitter_follwers %></td>
+        <td><%= link_to 'Show', follower_count %></td>
+        <td><%= link_to 'Edit', edit_follower_count_path(follower_count) %></td>
+        <td><%= link_to 'Destroy', follower_count, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Follower count', new_follower_count_path %>
