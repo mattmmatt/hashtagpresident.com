@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :follower_counts
   root 'welcome#index'
   get 'welcome/index'
 

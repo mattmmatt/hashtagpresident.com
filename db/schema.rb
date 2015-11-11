@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151107001223) do
+ActiveRecord::Schema.define(version: 20151111231555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,4 +26,14 @@ ActiveRecord::Schema.define(version: 20151107001223) do
     t.string   "twitter_handle"
   end
 
+  create_table "follower_counts", force: :cascade do |t|
+    t.integer  "candidate_id"
+    t.integer  "twitter_follwers"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "follower_counts", ["candidate_id"], name: "index_follower_counts_on_candidate_id", using: :btree
+
+  add_foreign_key "follower_counts", "candidates"
 end
