@@ -14,6 +14,7 @@
         $('#main').DataTable( {
           "paging":   false,
           "info":     false,
+          "order": [[ 3, "desc" ]],
           "searching": false,
            "ajax": {
             "url": "./welcome/data.json",
@@ -24,13 +25,8 @@
             { "data": "Party" },
             { "data": "Twitter URL" },
             { "data": "Followers Count"}
-        ],
-        "formatNumber": function ( toFormat ) {
-            return toFormat.toString().replace(
-            /\B(?=(\d{3})+(?!\d))/g, "'"
-          )
-      }
 
+        ]
         });
       });
   </script>
