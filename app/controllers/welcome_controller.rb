@@ -1,4 +1,6 @@
 class WelcomeController < ApplicationController
+  include ActionView::Helpers::NumberHelper
+  
   def index
   end
 
@@ -11,7 +13,7 @@ class WelcomeController < ApplicationController
       ch[:"Name"] = c.name
       ch[:"Party"] = c.party
       ch[:"Twitter URL"] = c.twitter_url
-      ch[:"Followers Count"] = c.followerCounts.last.twitter_followers
+      ch[:"Followers Count"] = number_with_delimiter(c.followerCounts.last.twitter_followers)
       r.push(ch)
     end
 
