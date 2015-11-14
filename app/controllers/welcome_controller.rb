@@ -13,7 +13,10 @@ class WelcomeController < ApplicationController
       ch[:"Name"] = c.name
       ch[:"Party"] = c.party
       ch[:"Twitter URL"] = c.twitter_url
-      ch[:"Followers Count"] = number_with_delimiter(c.followerCounts.last.twitter_followers)
+      lastCount = c.followerCounts.last
+      ch[:"Followers Count"] = number_with_delimiter(lastCount.twitter_followers)
+      count24HoursAgo = c.followerCounts.where("created_at >= ?", lastCount.created_at - 24.hours).first
+      ch[:"24change"] = number_with_delimiter(lastCount.twitter_followers - count24HoursAgo.twitter_followers)
       r.push(ch)
     end
 
