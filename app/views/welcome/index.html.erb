@@ -1,6 +1,33 @@
     <h3>hashtagpresident.com</h3>
     <div class="panel panel-default">
     <div class="panel-heading">2016 Presidential Candidates</div>
+    <%= button_tag "Democrats", type: 'button', class: 'btn btn-default', id: "DemocratsButton" %>
+    <%= button_tag "Republicans", type: 'button', class: 'btn btn-default', id: "RepublicansButton" %>
+    <%= button_tag "All", type: 'button', class: 'btn btn-default', id: "AllButton" %>
+    <script type="text/javascript">
+      $('#DemocratsButton').on( 'click', function () {
+        var table = $('#main').DataTable();
+        table
+          .columns( 1 )
+          .search( 'Democrat' )
+          .draw();
+        } );
+      $('#RepublicansButton').on( 'click', function () {
+        var table = $('#main').DataTable();
+        table
+          .columns( 1 )
+          .search( 'Republican' )
+          .draw();
+        } );
+      $('#AllButton').on( 'click', function () {
+        var table = $('#main').DataTable();
+        table
+          .columns( 1 )
+          .search( '' )
+          .draw();
+        } );
+    </script>
+
     <table class="table" id="main">
       <thead>
       <tr>
