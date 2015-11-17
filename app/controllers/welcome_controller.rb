@@ -3,6 +3,7 @@ class WelcomeController < ApplicationController
   require 'csv'
   
   def index
+    @last_updated_date = FollowerCount.last.created_at
   end
 
   def graph
