@@ -1,7 +1,6 @@
 class WelcomeController < ApplicationController
   include ActionView::Helpers::NumberHelper
   require 'csv'
-  require 'Date'
   
   def index
   end
