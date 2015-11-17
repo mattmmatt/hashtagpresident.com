@@ -2,8 +2,9 @@ Rails.application.routes.draw do
   resources :follower_counts
   root 'welcome#index'
   get 'welcome/index'
-
+  get 'welcome/graph'
   get 'welcome/data'
+  get 'welcome/csv'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,7 +1,11 @@
 class WelcomeController < ApplicationController
   include ActionView::Helpers::NumberHelper
+  require 'csv'
   
   def index
+  end
+
+  def graph
   end
 
   def data
@@ -24,5 +28,33 @@ class WelcomeController < ApplicationController
     end
 
     render json: r
+  end
+
+  def csv
+    r = Array.new
+    hr = ["date"]
+
+    c = Candidate.first
+    hr.push(c.name)
+    r.push(hr)
+    c.followerCounts.find_each do |fc|
+      r.push([fc.created_at, fc.twitter_followers])
+    end
+
+    # Candidate.find_each do |c|
+    #   hr.push(c.name)
+    #   lastCount = c.followerCounts.last
+    #   if hr2.length == 0
+    #     hr2.push(lastCount.created_at)
+    #   end
+    #   hr2.push(lastCount.twitter_followers)
+    # end
+    # r.push(hr)
+    # r.push(hr2)
+
+    # rows = [["date","Patrick"],[20111001,  63.4],[20121001,  70.0]]
+
+    csv = r.map(&:to_csv).join
+    render text: csv
   end
 end
