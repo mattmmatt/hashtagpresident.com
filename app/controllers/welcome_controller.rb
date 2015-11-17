@@ -1,6 +1,7 @@
 class WelcomeController < ApplicationController
   include ActionView::Helpers::NumberHelper
   require 'csv'
+  require 'Date'
   
   def index
   end
@@ -34,26 +35,32 @@ class WelcomeController < ApplicationController
     r = Array.new
     hr = ["date"]
 
-    c = Candidate.first
-    hr.push(c.name)
-    r.push(hr)
-    c.followerCounts.find_each do |fc|
-      r.push([fc.created_at, fc.twitter_followers])
+    date = FollowerCount.first.created_at
+    6.times do 
+      if r.length == 0
+        Candidate.find_each do |c|
+          hr.push(c.name)
+        end 
+        r.push(hr)
+      end
+      row = Array.new
+      row.push(date)
+
+      # add data for each candidate.
+      Candidate.find_each do |c|
+        # count = c.followerCounts.where("created_at >= #{date}").first.twitter_followers
+        fc = c.followerCounts.where("created_at <= ?", date).last
+        if fc
+          row.push(fc.twitter_followers)
+        end
+      end 
+      if row.count == Candidate.count + 1
+        r.push(row)
+      end
+
+      date = date + 1.day
     end
-
-    # Candidate.find_each do |c|
-    #   hr.push(c.name)
-    #   lastCount = c.followerCounts.last
-    #   if hr2.length == 0
-    #     hr2.push(lastCount.created_at)
-    #   end
-    #   hr2.push(lastCount.twitter_followers)
-    # end
-    # r.push(hr)
-    # r.push(hr2)
-
-    # rows = [["date","Patrick"],[20111001,  63.4],[20121001,  70.0]]
-
+    
     csv = r.map(&:to_csv).join
     render text: csv
   end
