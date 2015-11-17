@@ -7,30 +7,7 @@
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.8/css/jquery.dataTables.min.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.8/js/jquery.dataTables.min.js"></script>
 
-    <script type="text/javascript">
-      $(document).ready(function(){
-        $('#main').DataTable( {
-          "paging":   false,
-          "info":     false,
-          "order": [[ 3, "desc" ]],
-          "searching": true,
-           "ajax": {
-            "url": "./welcome/data.json",
-            "dataSrc": ""
-          },
-           "columns": [
-            { "data": "Name" },
-            { "data": "Party" },
-            { "data": "Twitter URL" },
-            { "data": "Followers Count"},
-            { "data": "24change"},
-            { "data": "24change Percent"}
-        ]
-        });
-    });
-  </script>
   </head>
   <body>
   	<%=yield %>

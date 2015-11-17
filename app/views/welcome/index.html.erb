@@ -1,11 +1,37 @@
     <h3>hashtagpresident.com</h3>
     <div class="panel panel-default">
     <div class="panel-heading">2016 Presidential Candidates</div>
-    <%= button_tag "Democrats", type: 'button', class: 'btn btn-default', id: "DemocratsButton" %>
-    <%= button_tag "Republicans", type: 'button', class: 'btn btn-default', id: "RepublicansButton" %>
-    <%= button_tag "All", type: 'button', class: 'btn btn-default', id: "AllButton" %>
+    <ul class="nav nav-pills">
+        <li class="active"><a href="#" id="AllButton">All</a></li>
+        <li><a href="#" id="DemocratsButton">Democrats</a></li>
+        <li><a href="#" id="RepublicansButton">Republicans</a></li>
+    </ul>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.8/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('#main').DataTable( {
+          "paging":   false,
+          "info":     false,
+          "order": [[ 3, "desc" ]],
+          "searching": true,
+           "ajax": {
+            "url": "./welcome/data.json",
+            "dataSrc": ""
+          },
+           "columns": [
+            { "data": "Name" },
+            { "data": "Party" },
+            { "data": "Twitter URL" },
+            { "data": "Followers Count"},
+            { "data": "24change"},
+            { "data": "24change Percent"}
+        ]
+        });
+    });
+  </script>
     <script type="text/javascript">
       $('#DemocratsButton').on( 'click', function () {
+        $(this).parent().addClass('active').siblings().removeClass('active');
         var table = $('#main').DataTable();
         table
           .columns( 1 )
@@ -13,6 +39,7 @@
           .draw();
         } );
       $('#RepublicansButton').on( 'click', function () {
+        $(this).parent().addClass('active').siblings().removeClass('active');
         var table = $('#main').DataTable();
         table
           .columns( 1 )
@@ -20,6 +47,7 @@
           .draw();
         } );
       $('#AllButton').on( 'click', function () {
+        $(this).parent().addClass('active').siblings().removeClass('active');
         var table = $('#main').DataTable();
         table
           .columns( 1 )
