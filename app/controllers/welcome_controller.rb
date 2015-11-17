@@ -12,7 +12,7 @@ class WelcomeController < ApplicationController
       ch[:"Twitter URL"] = c.twitter_url
       ch[:"Name"] = c.name
       ch[:"Party"] = c.party
-      ch[:"Twitter URL"] = c.twitter_url
+      ch[:"Twitter URL"] = "<a href='"+c.twitter_url+"' target='_blank'>" + c.twitter_url + "</a>"
       lastCount = c.followerCounts.last
       ch[:"Followers Count"] = number_with_delimiter(lastCount.twitter_followers)
       count24HoursAgo = c.followerCounts.where("created_at >= ?", lastCount.created_at - 24.hours).first
