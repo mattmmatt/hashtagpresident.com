@@ -46,7 +46,10 @@ class WelcomeController < ApplicationController
 
 
     date = FollowerCount.first.created_at
-    6.times do 
+    last_date = FollowerCount.last.created_at
+    total_days_count = ((last_date-date)/1.day).to_i
+
+    total_days_count.times do 
       if r.length == 0
         candidates.each do |c|
           hr.push(c.name)
