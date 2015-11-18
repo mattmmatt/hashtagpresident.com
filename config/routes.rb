@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'welcome/index'
   get 'welcome/graph'
+  get 'welcome/graph/:id' => 'welcome#graph'
   get 'welcome/data'
   get 'welcome/csv'
+  get 'welcome/csv/:id' => 'welcome#csv'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

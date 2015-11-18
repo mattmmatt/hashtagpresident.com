@@ -7,6 +7,7 @@ class WelcomeController < ApplicationController
   end
 
   def graph
+    @id = params[:id]
   end
 
   def data
@@ -15,7 +16,7 @@ class WelcomeController < ApplicationController
     Candidate.find_each do |c|
       ch = Hash.new
       ch[:"Twitter URL"] = c.twitter_url
-      ch[:"Name"] = c.name
+      ch[:"Name"] = '<a href="./welcome/graph/'+c.id.to_s+'">'+ c.name + "</a>"
       ch[:"Party"] = c.party
       ch[:"Twitter URL"] = "<a href='"+c.twitter_url+"' target='_blank'>" + c.twitter_url + "</a>"
       lastCount = c.followerCounts.last
@@ -35,10 +36,19 @@ class WelcomeController < ApplicationController
     r = Array.new
     hr = ["date"]
 
+    candidate_id = params[:id]
+    candidates = Array.new
+    if candidate_id.nil?
+      candidates = Candidate.all
+    else
+      candidates.push(Candidate.find(candidate_id))
+    end
+
+
     date = FollowerCount.first.created_at
     6.times do 
       if r.length == 0
-        Candidate.find_each do |c|
+        candidates.each do |c|
           hr.push(c.name)
         end 
         r.push(hr)
@@ -47,14 +57,14 @@ class WelcomeController < ApplicationController
       row.push(date)
 
       # add data for each candidate.
-      Candidate.find_each do |c|
+      candidates.each do |c|
         # count = c.followerCounts.where("created_at >= #{date}").first.twitter_followers
         fc = c.followerCounts.where("created_at <= ?", date).last
         if fc
           row.push(fc.twitter_followers)
         end
       end 
-      if row.count == Candidate.count + 1
+      if row.count == candidates.count + 1
         r.push(row)
       end
 
