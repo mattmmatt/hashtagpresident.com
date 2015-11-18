@@ -47,9 +47,8 @@ class WelcomeController < ApplicationController
 
     date = FollowerCount.first.created_at
     last_date = FollowerCount.last.created_at
-    total_days_count = ((last_date-date)/1.day).to_i
-
-    total_days_count.times do 
+    total_hours_count = ((last_date-date)/1.hour).to_i
+    total_hours_count.times do 
       if r.length == 0
         candidates.each do |c|
           hr.push(c.name)
@@ -71,7 +70,7 @@ class WelcomeController < ApplicationController
         r.push(row)
       end
 
-      date = date + 1.day
+      date = date + 1.hour
     end
     
     csv = r.map(&:to_csv).join
